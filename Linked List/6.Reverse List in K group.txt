@@ -1,7 +1,7 @@
 
 https://www.codingninjas.com/codestudio/problems/reverse-list-in-k-groups_983644?leftPanelTab=1
 
-
+Leet Code: https://leetcode.com/problems/reverse-nodes-in-k-group/submissions/
 /****************************************************************
     Following is the Linked List node structure
 
