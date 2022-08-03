@@ -1,0 +1,48 @@
+
+https://www.codingninjas.com/codestudio/problems/reverse-list-in-k-groups_983644?leftPanelTab=1
+
+
+/****************************************************************
+    Following is the Linked List node structure
+
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+    };
+
+*****************************************************************/
+
+
+Node* kReverse(Node* head, int k) {
+   
+   if(head==NULL)
+   {
+       return NULL;
+   }
+    Node* curr=head;
+    Node* prev=NULL;
+    Node* next=NULL;
+    int count=0;
+    while(curr!=NULL && count<k)
+    {
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        count++;
+    }
+    if(curr!=NULL)
+    {
+         head->next=kReverse(curr,k);
+    }
+    return prev;
+   
+    
+}
