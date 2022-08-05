@@ -1,0 +1,64 @@
+https://www.codingninjas.com/codestudio/problems/interview-shuriken-42-detect-and-remove-loop_241049?leftPanelTab=0
+
+/*************************************************
+    
+    class Node {
+        public :
+
+        int data;
+        Node *next;
+
+        Node(int data) {
+            this -> data = data;
+            this -> next = NULL;
+        }
+    };
+
+*************************************************/
+
+Node *Intersection(Node* head)
+{
+    if(head==NULL)
+        return NULL;
+    Node* slow=head;
+    Node* fast=head;
+    while(fast!=NULL && fast->next!=NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+        if(fast==slow)
+            return slow;
+    }
+    return NULL;
+}
+Node* firstNodeOfCycle(Node* head)
+{
+    if(head==NULL)
+        return NULL;
+    Node* firstnode=Intersection(head);
+    if(firstnode==NULL)
+        return NULL;
+    Node* slow=head;
+    while(slow!=firstnode)
+    {
+        slow=slow->next;
+        firstnode=firstnode->next;
+    }
+    return slow;
+}
+Node *removeLoop(Node *head)
+{
+    if(head==NULL)
+        return NULL; 
+    Node*  f=firstNodeOfCycle(head);
+    if(f==NULL)
+        return head;
+    Node* temp=f;
+    while(temp->next!=f)
+    {
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    return head;
+   
+}
